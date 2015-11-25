@@ -1,0 +1,47 @@
+<div class="row" ng-controller="commentCtrl">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Ajouter un commentaire !!!</h3>
+        </div>
+        <!-- /col-sm-12 -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form commandName="comment" class="form-inline">
+                <div class="form-group">
+                    <input path="text"  class="form-control" ng-model="comment.text" />
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="createcomment(comment)" >
+                    Ajouter
+                </button>
+            </form>
+        </div>
+    </div>
+    <hr />
+
+    <!-- /row -->
+    <div class="row" ng-repeat="commentItem in comments |orderBy : '-updated'">
+        <div class="col-sm-1">
+            <div class="thumbnail">
+                <img class="img-responsive user-photo" src="img\avatar_2x.png">
+            </div>
+            <!-- /thumbnail -->
+        </div>
+        <!-- /col-sm-1 -->
+
+        <div class="col-sm-11">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong> {{commentItem.user.username}} </strong>
+                    <span class="text-muted">
+                     {{commentItem.updated | date : "dd/MM/yyyy 'à' HH:mm:ss"}} </span>
+                </div>
+                <div class="panel-body">{{commentItem.text}}</div>
+                <!-- /panel-body -->
+            </div>
+            <!-- /panel panel-default -->
+        </div>
+        <!-- /col-sm-5 -->
+    </div>
+</div>
